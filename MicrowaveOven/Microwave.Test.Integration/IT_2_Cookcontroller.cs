@@ -65,5 +65,22 @@ namespace Microwave.Test.Integration
             _powerTube.Received(1).TurnOn(50);
         }
 
+
+        [TestCase]
+        public void CancelCooking_called()
+        {
+            //Act
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
+            _startCancelButton.Press();
+
+
+            //Assert
+            _powerTube.Received(1).TurnOff();
+        }
+
+
+
     }
 }

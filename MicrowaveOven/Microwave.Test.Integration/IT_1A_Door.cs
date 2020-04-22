@@ -38,16 +38,21 @@ namespace Microwave.Test.Integration
         [Test]
         public void CloseDoor()
         {
+            //Act
             _uut_door.Open();
             _uut_door.Close();
 
+            //Assert
             _light.Received(1).TurnOff();
         }
 
         [Test]
         public void OpenDoor()
         {
+            //Act
             _uut_door.Open();
+
+            //Assert
             _light.Received(1).TurnOn();
         }
     }
