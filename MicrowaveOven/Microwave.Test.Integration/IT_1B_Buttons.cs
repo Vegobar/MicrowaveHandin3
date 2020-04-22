@@ -42,11 +42,11 @@ namespace Microwave.Test.Integration
 
         }
 
-        [TestCase(1,50)]
-        [TestCase(2,100)]
-        [TestCase(4,200)]
-        [TestCase(14,700)]
-        [TestCase(15,700)]
+        [TestCase(1, 50)]
+        [TestCase(2, 100)]
+        [TestCase(4, 200)]
+        [TestCase(14, 700)]
+        [TestCase(15, 700)]
         public void sut_Power_Pressed_Multiple_Times_test(int times, int result)
         {
             for (int i = 0; i < times; i++)
@@ -55,18 +55,18 @@ namespace Microwave.Test.Integration
             }
             _display.Received(1).ShowPower(result);
         }
-        [TestCase(1,1)]
-        [TestCase(15,15)]
-        [TestCase(30,30)]
-        [TestCase(200,200)]
-        public void sut_Time_Pressed_test(int times,int result)
+        [TestCase(1, 1)]
+        [TestCase(15, 15)]
+        [TestCase(30, 30)]
+        [TestCase(200, 200)]
+        public void sut_Time_Pressed_test(int times, int result)
         {
             _powerButton.Press();
             for (int i = 0; i < times; i++)
             {
                 _timeButton.Press();
             }
-            _display.Received().ShowTime(result,0);
+            _display.Received().ShowTime(result, 0);
         }
 
         [Test]
@@ -89,8 +89,8 @@ namespace Microwave.Test.Integration
         }
 
         [TestCase(4, 10)]
-        [TestCase(12,50)]
-        [TestCase(14,100)]
+        [TestCase(12, 50)]
+        [TestCase(14, 100)]
         public void sut_Start_Multiple_Power_Time_test(int PowerPress, int TimePress)
         {
             for (int i = 0; i < PowerPress; i++)
@@ -106,9 +106,9 @@ namespace Microwave.Test.Integration
             _light.Received(1).TurnOn();
         }
 
-        [TestCase(2,10)]
-        [TestCase(5,30)]
-        [TestCase(6,20)]
+        [TestCase(2, 10)]
+        [TestCase(5, 30)]
+        [TestCase(6, 20)]
         public void sut_Stop_Multiple_Power_Time_test(int PowerPress, int TimePress)
         {
             for (int i = 0; i < PowerPress; i++)
@@ -125,10 +125,10 @@ namespace Microwave.Test.Integration
             _light.Received(1).TurnOff();
         }
 
-        [TestCase(4, 10,200,600)]
+        [TestCase(4, 10, 200, 600)]
         [TestCase(10, 20, 500, 1200)]
         [TestCase(14, 30, 700, 1800)]
-        public void sut_Start_Cooking_called_test(int PowerPress, int TimePress,int PowerLevel,int Time)
+        public void sut_Start_Cooking_called_test(int PowerPress, int TimePress, int PowerLevel, int Time)
         {
             for (int i = 0; i < PowerPress; i++)
             {
@@ -140,7 +140,7 @@ namespace Microwave.Test.Integration
                 _timeButton.Press();
             }
             _startCancelButton.Press();
-            _cookController.Received(1).StartCooking(PowerLevel,Time);
+            _cookController.Received(1).StartCooking(PowerLevel, Time);
 
         }
         [Test]
