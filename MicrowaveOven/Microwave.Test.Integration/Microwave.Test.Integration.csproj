@@ -60,7 +60,7 @@
     <Compile Include="IT_1A_Door.cs" />
     <Compile Include="IT_1B_Buttons.cs" />
     <Compile Include="IT_2_Cookcontroller.cs" />
-    <Compile Include="IT_3_Timer.cs" />
+    <Compile Include="IT_3A_Light.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

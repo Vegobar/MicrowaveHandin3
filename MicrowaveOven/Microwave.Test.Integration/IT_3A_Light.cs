@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Microwave.Test.Integration
 {
     [TestFixture]
-    class IT_3_Timer
+    public class IT_3A_Light
     {
         private UserInterface _userInterface;
         private Button _powerButton;
@@ -22,9 +22,10 @@ namespace Microwave.Test.Integration
         private CookController _cookController;
 
         private IDisplay _display;
-        private ILight _light;
-        private Timer _timer;
+        private Light _light;
+        private ITimer _timer;
         private IPowerTube _powerTube;
+        private IOutput _output;
 
         [SetUp]
         public void Setup()
@@ -33,11 +34,13 @@ namespace Microwave.Test.Integration
             _timeButton = new Button();
             _startCancelButton = new Button();
             _door = new Door();
+            _output = Substitute.For<IOutput>();
+            _light = new Light(_output);
 
 
             _display = Substitute.For<IDisplay>();
-            _light = Substitute.For<ILight>();
-            _timer = new Timer();
+           
+            _timer = Substitute.For<ITimer>();
             _powerTube = Substitute.For<IPowerTube>();
 
             _cookController = new CookController(_timer, _display, _powerTube, _userInterface);
@@ -53,26 +56,27 @@ namespace Microwave.Test.Integration
         }
 
         [TestCase]
-        public void TimeeIsUP()
+        public void LightOn()
         {
             //act
             _powerButton.Press();
             _timeButton.Press();
             _startCancelButton.Press();
 
-            System.Threading.Thread.Sleep(60000);
-
-            _powerTube.Received(1).TurnOff();
-
+            _output.Received(1).OutputLine("Light is turned on");
         }
 
 
         [TestCase]
-        public void TikTok_Time()
+        public void LightOff()
         {
+            //act
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
+            _startCancelButton.Press();
 
+            _output.Received(1).OutputLine("Light is turned off");
         }
-
-
     }
 }
