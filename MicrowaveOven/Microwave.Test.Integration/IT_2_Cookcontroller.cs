@@ -117,7 +117,7 @@ namespace Microwave.Test.Integration
         [TestCase(2, 10)]
         [TestCase(5, 30)]
         [TestCase(6, 20)]
-        public void sut_Stop_Multiple_Power_Time_test(int PowerPress, int TimePress)
+        public void sut_Stop_Multiple_Power_Time(int PowerPress, int TimePress)
         {
             for (int i = 0; i < PowerPress; i++)
             {
