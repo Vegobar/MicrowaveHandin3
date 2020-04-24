@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using MicrowaveOvenClasses.Boundary;
 using MicrowaveOvenClasses.Controllers;
@@ -81,6 +82,128 @@ namespace Microwave.Test.Integration
         }
 
 
+        [TestCase]
+        public void Cooking_TimerCalled()
+        {
+            //Act
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
 
+            //Assert
+            _timer.Received(1).Start(60);
+
+        }
+
+        [TestCase(4, 10)]
+        [TestCase(12, 50)]
+        [TestCase(14, 100)]
+        public void ButtonPushedMultipleTimes(int PowerPress, int TimePress)
+        {
+            for (int i = 0; i < PowerPress; i++)
+            {
+                _powerButton.Press();
+            }
+
+            for (int i = 0; i < TimePress; i++)
+            {
+                _timeButton.Press();
+            }
+            _startCancelButton.Press();
+            _light.Received(1).TurnOn();
+        }
+
+
+        [TestCase(2, 10)]
+        [TestCase(5, 30)]
+        [TestCase(6, 20)]
+        public void sut_Stop_Multiple_Power_Time_test(int PowerPress, int TimePress)
+        {
+            for (int i = 0; i < PowerPress; i++)
+            {
+                _powerButton.Press();
+            }
+
+            for (int i = 0; i < TimePress; i++)
+            {
+                _timeButton.Press();
+            }
+            _startCancelButton.Press();
+            _startCancelButton.Press();
+            _light.Received(1).TurnOff();
+        }
+
+
+
+        [TestCase(4, 10, 200, 600)]
+        [TestCase(10, 20, 500, 1200)]
+        [TestCase(14, 30, 700, 1800)]
+        public void Start_Cooking_called(int PowerPress, int TimePress, int PowerLevel, int Time)
+        {
+            for (int i = 0; i < PowerPress; i++)
+            {
+                _powerButton.Press();
+            }
+
+            for (int i = 0; i < TimePress; i++)
+            {
+                _timeButton.Press();
+            }
+            _startCancelButton.Press();
+            _powerTube.Received(1).TurnOn(PowerLevel);
+        }
+
+        [TestCase(4, 10, 200, 600)]
+        [TestCase(10, 20, 500, 1200)]
+        [TestCase(14, 30, 700, 1800)]
+        public void Start_Cooking_TimerReceived(int PowerPress, int TimePress, int PowerLevel, int Time)
+        {
+            for (int i = 0; i < PowerPress; i++)
+            {
+                _powerButton.Press();
+            }
+
+            for (int i = 0; i < TimePress; i++)
+            {
+                _timeButton.Press();
+            }
+            _startCancelButton.Press();
+            _timer.Received(1).Start(Time);
+        }
+
+
+
+        [Test]
+        public void StartCancelButton_Not_Clear()
+        {
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
+            _display.Received(0).Clear();
+        }
+
+
+        [Test]
+        public void StartCancelButton_Clear()
+        {
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
+            _startCancelButton.Press();
+            _display.Received(1).Clear();
+        }
+
+
+        [Test]
+        public void DoorOpen_StartCooking()
+        {
+            _door.Open();
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
+
+            _powerTube.DidNotReceive().TurnOn(50);
+
+        }
     }
 }
