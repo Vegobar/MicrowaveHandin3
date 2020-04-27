@@ -57,10 +57,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IT_1A_Door.cs" />
-    <Compile Include="IT_1B_Buttons.cs" />
-    <Compile Include="IT_2_Cookcontroller.cs" />
-    <Compile Include="IT_3A_Light.cs" />
+    <Compile Include="IT_1A_UI_Door.cs" />
+    <Compile Include="IT_1B_UI_Buttons.cs" />
+    <Compile Include="IT_2_UI_Cookcontroller.cs" />
+    <Compile Include="IT_3A_UI_Light.cs" />
+    <Compile Include="IT_3B_UI_CC_Display.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

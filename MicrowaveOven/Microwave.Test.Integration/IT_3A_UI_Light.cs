@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Microwave.Test.Integration
 {
     [TestFixture]
-    public class IT_3A_Light
+    public class IT_3A_UI_Light
     {
         private UserInterface _userInterface;
         private Button _powerButton;

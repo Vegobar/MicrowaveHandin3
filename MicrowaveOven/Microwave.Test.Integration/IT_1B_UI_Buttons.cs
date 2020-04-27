@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace Microwave.Test.Integration
 {
     [TestFixture]
-    class IT_1B_Buttons
+    class IT_1B_UI_Buttons
     {
         private UserInterface _uut;
         private Button _powerButton;

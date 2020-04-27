@@ -10,7 +10,7 @@ using System.Text;
 namespace Microwave.Test.Integration
 {
     [TestFixture]
-    public class IT_1A_Door
+    public class IT_1A_UI_Door
     {
         private UserInterface _userInterface;
         private Door _uut_door;
