@@ -39,13 +39,15 @@ namespace Microwave.Test.Unit
             Assert.That(!pause.WaitOne(900));
         }
 
+        
+        //This test was changed due to changes in Timer implementation. uut.start changes from 2000 to 2.
         [Test]
         public void Start_TimerExpires_ShortEnough()
         {
             ManualResetEvent pause = new ManualResetEvent(false);
 
             uut.Expired += (sender, args) => pause.Set();
-            uut.Start(2000);
+            uut.Start(2);
 
             // wait for expiration, but not much longer, should come
             Assert.That(pause.WaitOne(2100));
@@ -63,6 +65,8 @@ namespace Microwave.Test.Unit
             Assert.That(!pause.WaitOne(1900));
         }
 
+        
+        //This test was changed due to changes in Timer implementation. uut.start changed from 2000 to 2 and assert Notfications changed to 2.
         [Test]
         public void Start_TimerTick_CorrectNumber()
         {

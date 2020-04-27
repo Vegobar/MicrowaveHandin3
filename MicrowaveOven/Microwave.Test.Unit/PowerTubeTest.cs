@@ -19,20 +19,18 @@ namespace Microwave.Test.Unit
             uut = new PowerTube(output);
         }
 
-        [TestCase(1)]
-        [TestCase(50)]
-        [TestCase(100)]
-        public void TurnOn_WasOffCorrectPower_CorrectOutput(int power)
+        
+        [TestCase(50,7)]
+        [TestCase(100,14)]
+        public void TurnOn_WasOffCorrectPower_CorrectOutput(int power, int percent)
         {
             uut.TurnOn(power);
-            output.Received().OutputLine(Arg.Is<string>(str => str.Contains($"{power}")));
+            output.Received().OutputLine(Arg.Is<string>(str => str.Contains($"{percent}")));
         }
 
         [TestCase(-5)]
         [TestCase(-1)]
         [TestCase(0)]
-        [TestCase(101)]
-        [TestCase(150)]
         public void TurnOn_WasOffOutOfRangePower_ThrowsException(int power)
         {
             Assert.Throws<System.ArgumentOutOfRangeException>(() => uut.TurnOn(power));

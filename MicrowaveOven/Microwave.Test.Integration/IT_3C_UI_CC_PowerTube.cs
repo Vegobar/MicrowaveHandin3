@@ -60,8 +60,8 @@ namespace Microwave.Test.Integration
                 _cookController);
         }
 
-        [TestCase((50/700*100), 1)]
-        [TestCase((150/700*100), 3)]
+        [TestCase(7, 1)]
+        [TestCase(21, 3)]
         public void TurnOn_test(int power, int Powerpress)
         {
 

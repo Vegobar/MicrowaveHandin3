@@ -28,7 +28,7 @@ namespace MicrowaveOvenClasses.Boundary
                 throw new ApplicationException("PowerTube.TurnOn: is already on");
             }
 
-            myOutput.OutputLine($"PowerTube works with {percent}");
+            myOutput.OutputLine($"PowerTube works with {Math.Round(percent,0)}");
             IsOn = true;
         }
 
