@@ -62,6 +62,7 @@
     <Compile Include="IT_2_UI_Cookcontroller.cs" />
     <Compile Include="IT_3A_UI_Light.cs" />
     <Compile Include="IT_3B_UI_CC_Display.cs" />
+    <Compile Include="IT_3C_UI_CC_PowerTube.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

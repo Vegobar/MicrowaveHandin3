@@ -172,7 +172,6 @@ namespace Microwave.Test.Integration
         }
 
 
-
         [Test]
         public void StartCancelButton_Not_Clear()
         {
