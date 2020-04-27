@@ -60,21 +60,21 @@ namespace Microwave.Test.Integration
                 _cookController);
         }
 
-        // [TestCase(50,1)]
-        // [TestCase(150,3)]
-        // public void TurnOn_test(int power, int Powerpress)
-        // {
-        //     
-        //     for (int i = 0; i < Powerpress; i++)
-        //     {
-        //         _powerButton.Press();
-        //     }
-        //     
-        //     _timeButton.Press();
-        //     _startCancelButton.Press();
-        //
-        //     _output.Received(1).OutputLine($"PowerTube works with {power}");
-        // }
+        [TestCase((50/700*100), 1)]
+        [TestCase((150/700*100), 3)]
+        public void TurnOn_test(int power, int Powerpress)
+        {
+
+            for (int i = 0; i < Powerpress; i++)
+            {
+                _powerButton.Press();
+            }
+
+            _timeButton.Press();
+            _startCancelButton.Press();
+
+            _output.Received(1).OutputLine($"PowerTube works with {power}");
+        }
 
 
     }
