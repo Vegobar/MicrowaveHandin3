@@ -64,6 +64,7 @@
     <Compile Include="IT_3B_UI_CC_Display.cs" />
     <Compile Include="IT_3C_UI_CC_PowerTube.cs" />
     <Compile Include="IT_3D_UI_CC_Timer.cs" />
+    <Compile Include="IT_4_SYSTEM_OUTPUT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

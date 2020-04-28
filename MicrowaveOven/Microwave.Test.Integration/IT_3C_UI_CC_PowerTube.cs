@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Microwave.Test.Integration
@@ -32,7 +33,7 @@ namespace Microwave.Test.Integration
         public void Setup()
         {
             _output = Substitute.For<IOutput>();
-            
+            _timer = Substitute.For<ITimer>();
             _powerButton = new Button();
             _timeButton = new Button();
             _startCancelButton = new Button();
@@ -42,9 +43,6 @@ namespace Microwave.Test.Integration
 
 
             _display = new Display(_output);
-
-            
-            _timer = Substitute.For<ITimer>();
 
             _powerTube = new PowerTube(_output);
 
@@ -74,6 +72,28 @@ namespace Microwave.Test.Integration
             _startCancelButton.Press();
 
             _output.Received(1).OutputLine($"PowerTube works with {power}");
+        }
+
+        [Test]
+        public void TurnOff_DoorOpen_test()
+        {
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
+            _door.Open();
+
+            _output.Received(1).OutputLine($"PowerTube turned off");
+        }
+
+        [Test]
+        public void TurnOff_CancelPressed_test()
+        {
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
+            _startCancelButton.Press();
+
+            _output.Received(1).OutputLine($"PowerTube turned off");
         }
 
 

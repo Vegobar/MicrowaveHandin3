@@ -58,6 +58,8 @@ namespace Microwave.Test.Integration
         }
 
         [TestCase(00,58,2100)]
+        [TestCase(00,55,5100)]
+        [TestCase(00,50,10100)]
         public void Timer_check(int min, int sec, int sleeptime)
         {
             _powerButton.Press();
@@ -67,6 +69,18 @@ namespace Microwave.Test.Integration
             Thread.Sleep(sleeptime);
             
             _output.Received(1).OutputLine($"Display shows: {min:D2}:{sec:D2}");
+        }
+
+        [Test]
+        public void Timer_Expired_test()
+        {
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
+
+            Thread.Sleep(61000);
+
+            _output.Received(1).OutputLine($"PowerTube turned off");
         }
     }
 }
