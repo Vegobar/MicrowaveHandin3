@@ -31,7 +31,7 @@ namespace Microwave.Test.Integration
             _cooker = Substitute.For<ICookController>();
 
             _door = new Door();
-            _userInterface = new UserInterface(_power, _time, _start, _uut_door, _display, _light, _cooker);
+            _userInterface = new UserInterface(_power, _time, _start, _door, _display, _light, _cooker);
         }
 
         [Test]
