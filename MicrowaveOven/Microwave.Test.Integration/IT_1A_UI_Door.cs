@@ -19,7 +19,6 @@ namespace Microwave.Test.Integration
         private IDisplay _display;
         private IButton _start, _power, _time;
         private ICookController _cooker;
-        private IOutput _output;
 
         [SetUp]
         public void Setup()
