@@ -63,7 +63,7 @@ namespace Microwave.Test.Integration
 
         //Display -> Output
         [Test]
-        public void Output_Timer_test()
+        public void Output_Timer()
         {
             _powerButton.Press();
             _timeButton.Press();
@@ -72,7 +72,7 @@ namespace Microwave.Test.Integration
         }
 
         [Test]
-        public void Output_Power_test()
+        public void Output_Power()
         {
             _powerButton.Press();
 

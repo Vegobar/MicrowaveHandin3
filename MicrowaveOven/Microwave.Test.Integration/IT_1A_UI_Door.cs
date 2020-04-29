@@ -13,7 +13,7 @@ namespace Microwave.Test.Integration
     public class IT_1A_UI_Door
     {
         private UserInterface _userInterface;
-        private Door _uut_door;
+        private Door _door;
 
         private ILight _light;
         private IDisplay _display;
@@ -30,7 +30,7 @@ namespace Microwave.Test.Integration
             _display = Substitute.For<IDisplay>();
             _cooker = Substitute.For<ICookController>();
 
-            _uut_door = new Door();
+            _door = new Door();
             _userInterface = new UserInterface(_power, _time, _start, _uut_door, _display, _light, _cooker);
         }
 
@@ -38,8 +38,8 @@ namespace Microwave.Test.Integration
         public void CloseDoor()
         {
             //Act
-            _uut_door.Open();
-            _uut_door.Close();
+            _door.Open();
+            _door.Close();
 
             //Assert
             _light.Received(1).TurnOff();
@@ -49,7 +49,7 @@ namespace Microwave.Test.Integration
         public void OpenDoor()
         {
             //Act
-            _uut_door.Open();
+            _door.Open();
 
             //Assert
             _light.Received(1).TurnOn();

@@ -72,7 +72,7 @@ namespace Microwave.Test.Integration
         }
 
         [Test]
-        public void Timer_Expired_test()
+        public void Timer_Expired()
         {
             _powerButton.Press();
             _timeButton.Press();

@@ -12,7 +12,7 @@ namespace Microwave.Test.Integration
     [TestFixture]
     class IT_1B_UI_Buttons
     {
-        private UserInterface _uut;
+        private UserInterface _ui;
         private Button _powerButton;
         private Button _timeButton;
         private Button _startCancelButton;
@@ -31,7 +31,7 @@ namespace Microwave.Test.Integration
             _display = Substitute.For<IDisplay>();
             _light = Substitute.For<ILight>();
             _cookController = Substitute.For<ICookController>();
-            _uut = new UserInterface(
+            _ui = new UserInterface(
                 _powerButton,
                 _timeButton,
                 _startCancelButton,

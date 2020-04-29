@@ -60,7 +60,7 @@ namespace Microwave.Test.Integration
 
         [TestCase(7, 1)]
         [TestCase(21, 3)]
-        public void TurnOn_test(int power, int Powerpress)
+        public void TurnOn(int power, int Powerpress)
         {
 
             for (int i = 0; i < Powerpress; i++)
@@ -75,7 +75,7 @@ namespace Microwave.Test.Integration
         }
 
         [Test]
-        public void TurnOff_DoorOpen_test()
+        public void TurnOff_DoorOpen()
         {
             _powerButton.Press();
             _timeButton.Press();
@@ -86,7 +86,7 @@ namespace Microwave.Test.Integration
         }
 
         [Test]
-        public void TurnOff_CancelPressed_test()
+        public void TurnOff_CancelPressed()
         {
             _powerButton.Press();
             _timeButton.Press();
